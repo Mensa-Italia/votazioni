@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block section %} - {{voting.voting_title}}{% endblock section %}
+
+{% block content %}
+Grazie per aver votato. <br><br>
+Puoi verificare che il voto sia stato correttamente registrato 
+andando all'indirizzo <a href="/verify?key={{key}}">/verify?key={{key}}</a>
+{% endblock content %}

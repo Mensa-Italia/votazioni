@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block section %} - Amministrazione{% endblock section %}
+
+{% block content %}
+
+<div class="alert alert-primary" role="alert">
+Area di amministrazione e caricamento della lista degli aventi diritto al voto e delle eventuali mail addizionali per test e, infine, per il reinivio dei dati di autenticazione.
+  </div>
+
+<div class="list-group">
+{% for action in actions %}
+<a class="list-group-item list-group-item-action" href="{{action.url}}">{{action.name}}</a>
+{% endfor %}
+</div>
+
+{% endblock content %}

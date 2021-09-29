@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block section %} - <a href="/management">Amministrazione</a> - Caricamento aventi diritto{% endblock section %}
+
+{% block content %}
+
+<div class="alert alert-primary" role="alert">
+Caricare il file excel degli utenti da Area32. Il sistema filtrerà automaticamente gli aventi diritto  
+</div>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token%}
+    {{form}}
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock content %}

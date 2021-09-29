@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block section %} - <a href="/management">Amministrazione</a> - Invio codici di accesso{% endblock section %}
+
+{% block content %}
+<script>
+    function select_all(){
+        for(let input of document.getElementsByClassName('mail')){
+            input.checked = !input.checked;
+        }
+    }
+    function filter() {
+        let fltr = document.getElementById('fltr').value;
+        for(let li of document.getElementsByTagName('li')) {
+            if (li.dataset.filter.toLowerCase().indexOf(fltr) >= 0) {
+                li.style.display='block';
+            } else {
+                li.style.display='none';
+            }
+        }
+        console.log(fltr);
+    }
+</script>
+<div class="alert alert-primary" role="alert">
+Seleziona gli indirizzi a cui inviare i dati di accesso.
+</div>
+
+<form method="POST" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="btn btn-primary col" onclick="select_all()">Seleziona tutti</button>
+        <span class="col"></span>
+        <span class="col"></span>
+        <input class="form-control col" type="text" id="fltr" onkeyup="filter()">
+        <span class="col"></span>
+        <span class="col"></span>
+        <button class="btn btn-primary col" type="submit">Invia mail</button>
+    </div>
+</nav>
+
+    {% csrf_token%}
+    <ul class="list-group">
+        {%for item in items%}
+        <li class="list-group-item" data-filter="{{item.name}} {{item.surname}} {{item.email}}">
+            <input id="{{item.email}}" class="form-check-input mail" type="checkbox" name="send" value="{{item.email}}"> 
+            <label for="{{item.email}}">{{item.name}} {{item.surname}} ({{item.email}})</label>
+        </li>
+        {%endfor%}
+    </ul>
+</form>
+
+{% endblock content %}
