@@ -129,7 +129,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY','cbbd6bcc34b7310922d1e7769b14227d-dbdfb8ff-babb2aa9')
 
 #EMAIL_HOST = 'smtp.mailersend.net'
 #EMAIL_HOST_USER = 'MS_AjsdzM@mensa.it' # this is exactly the value 'apikey'
