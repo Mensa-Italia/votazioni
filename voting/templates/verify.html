@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {%load voting %}
 
-{% block section %} - <a href="/management">Amministrazione</a> - Statistiche di voto{% endblock section %}
+{% block section %} - Statistiche di voto{% endblock section %}
 
 {% block content %}
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{error}}
+</div>
+{% endif %}
+
 <h1>Il tuo voto</h1>
 <div class="row">
 <table class="table col">
@@ -32,6 +39,7 @@
                 {% for option in voting.vote_options.values %}
                     <td style="text-align:center;">{{option}}</td>
                 {% endfor%}
+                <td>Totale</td>
             </tr>
         {%endif%}
         {%for candidate in voting.candidates%}
@@ -46,6 +54,7 @@
                         {% votesfor candidate.id option %}
                     </td>                
                 {% endfor %}
+                <td>{% votesfor candidate.id %}</td>
             {% endif %}
         </tr>
         {%endfor%}

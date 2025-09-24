@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block section %} - <a href="/management">Amministrazione</a> - Caricamento aventi diritto{% endblock section %}
+
+{% block content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js" integrity="sha512-GoORoNnxst42zE3rYPj4bNBm0Q6ZRXKNH2D9nEmNvVF/z24ywVnijAWVi/09iBiVDQVf3UlZHpzhAJIdd9BXqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<style>
+#editor { 
+    width: 100%;
+    height: calc(100vh - 128px);
+}
+</style>
+<div class="navbar navbar-light bg-light">
+    <span></span>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+        <input type="hidden" id="heditor" name="content" value="{{file}}">
+        <input type="hidden" name="file" value="{{filename}}">
+        <button class="btn btn-primary" type="submit">Salva modifiche</button>
+    </form>
+</div>
+<div class="row">
+    <div class="col">
+        {% for file in templates%}
+        <li><a href="/management/edit?file={{file.path}}">{{file.name}}</a></li>
+        {%endfor%}
+    </div>
+    <div class="col-9" >
+        <div id="editor">{{file}}</div>
+    </div>
+</div>
+
+<script>
+    ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/');
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.on('change', function(data){
+        document.getElementById('heditor').value=editor.getValue();
+    });
+</script>
+
+{% endblock content %}

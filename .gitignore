@@ -1,3 +1,9 @@
 db.sqlite3
 local.csv
 
+*.sqlite3
+*.sqlite
+
+*.csv
+
+*.pyc

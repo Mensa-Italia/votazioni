@@ -1,44 +1,29 @@
 {
-    "org": "Mensa Italia",
+    "org": "Mensa Italia - Elezioni Segreteria Piemonte",
     "presentation_file": "",
-    "voting_title": "Elezioni Consiglio Nazionale 2021-2023",
-    "voting_begin": "2021-09-26T01:00:00",
-    "voting_end": "2021-10-29T01:00:00",    
-    "voting_verify_end": "2021-26-10T01:00:00",
+    "voting_title": "Elezioni Segreteria Piemonte",
+    "voting_begin": "2025-09-09T00:00:00",
+    "voting_end": "2025-09-15T23:59:59",    
+    "voting_verify_end": "2025-09-15T23:59:59",
     "candidates": [
-        {"id": "Filippo_Cioni", "name": "Filippo Cioni", "title": "Candidato"},
-        {"id": "Manuel_Cuni", "name": "Manuel Cuni", "title": "Candidato"},
-        {"id": "AnnaMirella_DiAttilio", "name": "Anna Mirella Di Attilio", "title": "Candidata"},
-        {"id": "Simone_Ferrari", "name": "Simone Ferrari", "title": "Candidato"},
-        {"id": "FedericoSilvio_Gorrino", "name": "Federico Silvio Gorrino", "title": "Candidato"},
-        {"id": "Marco_Montanari", "name": "Marco Montanari", "title": "Candidato"},
-        {"id": "Sergio_Sartor", "name": "Sergio Sartor", "title": "Candidato"}
+        {"id": "babici", "name": "Simion Babici", "title": "Candidato"},
+        {"id": "sipione", "name": "Matteo Sipione", "title": "Candidato"},
+        {"id": "ponissi", "name": "Carlo 'Jack' Ponissi", "title": "Candidato"}
     ],
     
     "vote_options" : {
-        "Presidente" : "Presidente",
-        "Tesoriere" : "Tesoriere",
-        "Segretario_Nazionale" : "Segretario Nazionale",
-        "Sviluppo_ed_Eventi" : "Sviluppo ed Eventi",
-        "IT_e_Comunicazione" : "IT e Comunicazione"
+        "CDG1" : "segreteria"
     },
     "mode": 4,
 
     "input": {
         "format": "Excel",
         "columns": {
-            "E-Mail": "email",
+            "Email": "email",
             "Cognome": "surname",
             "Nome":"name"
         }, 
         "valid":[
-            {   
-                "col": "Attivo",
-                "val": "Attivo"
-            }, {
-                "col": "Socio",
-                "val": "Socio"
-            }
         ]
     }
 }

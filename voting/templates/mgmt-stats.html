@@ -19,6 +19,7 @@
                 {% for option in voting.vote_options.values %}
                     <td style="text-align:center;">{{option}}</td>
                 {% endfor%}
+                <td>Totale</td>
             </tr>
         {%endif%}
         {%for candidate in voting.candidates%}
@@ -33,6 +34,7 @@
                         {% votesfor candidate.id option %}
                     </td>                
                 {% endfor %}
+                <td>{% votesfor candidate.id %}</td>
             {% endif %}
         </tr>
         {%endfor%}

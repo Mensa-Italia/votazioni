@@ -37,14 +37,14 @@
                 input[i].checked = false;
         }
         el.checked = true;
-        checkBlanks();
+        //checkBlanks();
     }
 </script>
-<form method="POST">
+<form method="POST"  onSubmit="return confirm('Confermi l\'invio del voto?')">
     {% csrf_token%}
     
           <h1>{{voting.voting_title}}</h1>
-          <a href="" target="_blank">Qui</a> trovate le presentazioni dei candidati
+          <!--<a href="{{voting.presentation_file}}" target="_blank">Qui</a> trovate le presentazioni dei candidati-->
     <table class="table">
         {%if voting.mode == 4 %}
             <tr>
@@ -68,10 +68,10 @@
         </tr>
         {%endfor%}
     </table>
-    <div id="alert" class="alert alert-danger" role="alert">
+    <div id="alert" class="alert alert-danger" style="display:none" role="alert" >
         E' necessario esprimere un voto per ogni categoria.
       </div>
-    <button id="submit" type="submit" style="display:none" class="btn btn-primary">Vota</button>
+    <button id="submit" type="submit" class="btn btn-primary" >Vota</button>
 </form>
 
 {% endblock content %}

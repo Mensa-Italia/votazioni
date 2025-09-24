@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{%load voting %}
+
+{% block section %} - Statistiche di voto{% endblock section %}
+
+{% block content %}
+
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{error}}
+</div>
+{% endif %}
+
+{% if mode == 'full'%}
+<h1>Statistiche di voto</h1>
+<div class="row">
+<table class="table col">
+    <tr><th>Aventi diritto</th><td>{{items}}</td></tr>
+    <tr><th>Votanti</th><td>{{voters}}</td></tr>
+    <tr><th>Voti</th><td>{{votes}}</td></tr>
+</table>
+<div class="col-9">
+    <table class="table">
+        {%if voting.mode == 4 %}
+            <tr>
+                <td></td>
+                {% for option in voting.vote_options.values %}
+                    <td style="text-align:center;">{{option}}</td>
+                {% endfor%}
+                <td>Totale</td>
+            </tr>
+        {%endif%}
+        {%for candidate in voting.candidates%}
+        <tr>
+            <td>{{candidate.name}}</td>
+            {% if voting.mode == 1 %}
+            {% elif voting.mode == 2 %}
+            {% elif voting.mode == 3 %}
+            {% elif voting.mode == 4 %}
+                {% for option in voting.vote_options.keys %}
+                    <td style="text-align:center;">
+                        {% votesfor candidate.id option %}
+                    </td>                
+                {% endfor %}
+                <td>{% votesfor candidate.id %}</td>
+            {% endif %}
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+</div>
+{% endif %}
+{% endblock content %}

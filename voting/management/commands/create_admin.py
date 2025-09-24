@@ -2,6 +2,7 @@ import logging
 import uuid
 import os
 
+from django.template.loader import render_to_string 
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as gettext
@@ -23,12 +24,12 @@ class Command(BaseCommand):
             user_model.objects.create_superuser('admin', ADMIN_MAIL, password)
             email = EmailMessage(
                 "Credenziali amministrazione per il voto ",
-                '''Buongiorno, ecco le credenziali di accesso amministrativo al sistema di voto: 
-                server: {}/admin
-                username: admin
-                password: {}'''.format(HOST_NAME, password),
-                'votazioni@mensa.it',
-                ['marco.montanari@gmail.com'],
+                render_to_string('email/admin-credentials.txt', {
+                    "id": password,
+                    "host": HOST_NAME
+                }),
+                'abruzzo@mensa.it',
+                [ADMIN_MAIL],
                 ['votazionimensaitalia@gmail.com'],
             )
             email.send()

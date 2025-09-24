@@ -14,7 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -37,14 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'voting'
+    'voting',
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+#    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -119,16 +120,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY','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')
+MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY','cbbd6bcc34b7310922d1e7769b14227d-dbdfb8ff-babb2aa9')
 
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
-EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+#EMAIL_HOST = 'smtp.mailersend.net'
+#EMAIL_HOST_USER = 'MS_AjsdzM@mensa.it' # this is exactly the value 'apikey'
+#EMAIL_HOST_PASSWORD = 'Dj3kM4At7eKC2hcp'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+
+
+EMAIL_HOST = 'smtp-relay.gmail.com'
+EMAIL_HOST_USER = 'amministratore@mensa.it' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = 'qoxt nwdl tram rdda'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = None

@@ -1,0 +1,4 @@
+E' stato espresso un nuovo voto. 
+Per accedere alla piattaforma e verificare il voto espresso puoi accedere al seguente link:
+https://piemonte.votazioni.mensa.it/verify?key={{emailKey}}
+
